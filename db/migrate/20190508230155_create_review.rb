@@ -6,6 +6,7 @@ class CreateReview < ActiveRecord::Migration[5.1]
       t.string :text
       t.integer :rating
       t.string :headline
+      t.timestamps
     end
   end
 end
