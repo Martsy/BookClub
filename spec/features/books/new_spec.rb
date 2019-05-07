@@ -1,59 +1,65 @@
 require 'rails_helper'
 
-# RSpec.describe 'creating a new book' do
-#   it 'can create a book' do
-#     new_book = 'Rails on Ruby'
-#     visit '/books/new'
-#
-#     fill_in :book_title, with: new_book
-#     fill_in :book_length, with: pages
-#     fill_in :book_year_published, with: year_published
-#     click_on 'Create Book'
-#
-#     new_book = Book.last
-#
-#     expect(current_path).to eq(book_path(new_book))
-#     expect(page).to have_content(title)
-#     expect(page).to have_content(pages)
-#     expect(page).to have_content(year_published)
-#     expect(page).to have_content(author.name)
-#   end
-# end
+RSpec.describe 'new book', type: :feature do
+  before :each do
+    @title = 'Ruby On Rails'
+    @pages = 523
+    @year_published = 2019
+    @book_cover = 'url'
+    @authors = 'Chad Smith'
+  end
 
-RSpec.describe 'As a visitor' do
-  describe 'when I visit the new book form page' do
-    it 'I can create a new book' do
-      visit '/books/new'
+  describe 'As a visitor' do
+    describe 'when I visit the book index page' do
+      it 'I see a link to create a new book' do
+        visit books_path
 
-      fill_in 'Title', with: 'Rails on Ruby'
-      fill_in 'Author', with: 'Chad Smith'
-      fill_in 'Pages', with: 521
-      click_on 'Create Book'
+        click_on 'Add Book'
 
-      new_book = Book.last
+        expect(current_path).to eq(new_book_path)
 
-      # expect(current_path).to eq("/books/#{new_book.id}")
-      expect(page).to_content(new_book)
-
+        expect(page).to have_content('Title')
+        expect(page).to have_content('Author')
+        expect(page).to have_content('Pages')
+        expect(page).to have_content('Cover')
+      end
     end
   end
+
+  describe 'As a visitor' do
+    describe 'when I visit the new book form page' do
+      it 'I can create a new book' do
+        visit new_book_path
+
+        fill_in 'Book[title]', with: @title
+        fill_in 'Book[author]', with: @author
+        fill_in 'Book[pages]', with: @pages
+
+        click_button 'Create Book'
+
+        new_book = Book.last
+
+        expect(current_path).to eq(book_path(book))
+        expect(book.title).to eq(@title)
+        expect(book.pages).to eq(@pages)
+      end
+    end
+  end
+
+  it 'adds a new book to author or adds a new author' do
+    author_1 = Author.create(name: 'Chad Smith')
+
+    visit new_book_path
+
+    fill_in 'book[title]', with: @title
+    fill_in 'book[pages]', with: @pages
+    fill_in 'book[authors]', with: @authors
+    fill_in 'book[year]', with: @year_published
+    fill_in 'book[cover]', with: @book_cover
+
+    click_button 'Create Book'
+
+    expect(Author.count).to eq(1)
+    expect(Author.first.books.count).to eq(1)
+  end
 end
-
-# User Story 12
-# Add a New Book to the System
-
-# As a Visitor,
-# When I visit the book index page,
-# I see a link that allows me to add a new book.
-# When I click that link, I am taken to a new book path.
-# I can add a new book through a form, including the book's
-# title, author(s), and number of pages in the book.
-# When I submit the form, I am taken to that book's show page.
-#
-# Book titles should be converted to Title Case before saving.
-# Book titles should be unique within the system.
-# For authors, a comma-separated list of names should be entered,
-# and each author will be added to the database.
-# Authors added to the database should have their names converted
-# to Title Case.
-# Author Names should be unique within the system.
