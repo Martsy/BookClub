@@ -1,0 +1,37 @@
+<html>
+  <article id="user-show">
+    <img src="<%= @user.photo%>">
+    <span><%=@user.name%></span>
+  </article>
+
+  <section id="reviews-section">
+    <% @user.reviews.each do |review| %>
+      <article class="review" id="review-<%= review.id%>">
+        <h4 class="review-headline">
+          <%= review.headline %>
+        </h4>
+
+        <p><%=review.created_at.strftime("%B %d, %Y")%></p>
+
+        <p>Rating: <%=review.rating %> </p>
+        <p> <%=review.text %> </p>
+
+        <article class="book-review">
+          <a href="<%=book_path(review.book.id) %>">
+            <h5>
+              <%=review.book.title%>
+            </h5>
+          </a>
+
+          <div class="book-rating">
+            <%= "#{'⭐' * review.book.average_rating.to_i} #{review.book.number_of_reviews.to_s} user review#{review.book.number_of_reviews != 1 ? 's' : ''}"%>
+          </div>
+          <a href="<%=book_path(review.book.id) %>">
+            <img src="<%=review.book.book_cover%>">
+          </a>
+        </article>
+      </article>
+    <% end %>
+  </section>
+
+</html>
