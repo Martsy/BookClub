@@ -2,7 +2,7 @@ class CreateAuthor < ActiveRecord::Migration[5.1]
   def change
     create_table :authors do |t|
       t.string :name
-      t.string :photo, default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+      t.string :photo, default: "https://i.stack.imgur.com/l60Hf.png"
       t.timestamps
     end
   end
