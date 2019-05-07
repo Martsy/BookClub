@@ -54,8 +54,8 @@ RSpec.describe 'new book', type: :feature do
     fill_in 'book[title]', with: @title
     fill_in 'book[pages]', with: @pages
     fill_in 'book[authors]', with: @authors
-    fill_in 'book[year]', with: @year_published
-    fill_in 'book[cover]', with: @book_cover
+    fill_in 'book[year_published]', with: @year_published
+    fill_in 'book[book_cover]', with: @book_cover
 
     click_button 'Create Book'
 
