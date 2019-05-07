@@ -27,7 +27,7 @@
       <article id="review-<%=review.id%>">
         <h6> <%= review.headline%> </h6>
         <span>Rating: <%= review.rating%> </span>
-        <span> <%= review.user.name %></span>
+         <%= link_to  review.user.name, user_path(review.user) %>
         <%= image_tag  review.user.photo %>
         <p> <%= review.text%> </p>
       </article>
