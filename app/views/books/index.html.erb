@@ -1,0 +1,14 @@
+<html>
+    
+    <section id="books-section">
+        <% @books.each do |book| %>
+            <div>
+                <%= book.title %>
+                <%= book.pages %>
+                <%= book.get_authors.join(", ") %>
+                <%= book.year_published %>
+            </div>
+
+    <% end %>
+    </section>
+</html>
