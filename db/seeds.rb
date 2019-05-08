@@ -9,6 +9,8 @@
 a = Author.create(name: 'Michael  Fitzgerald')
 a.books << Book.create(title: 'Learnining Ruby: The Language That Powers Rails', pages: 275, year_published: 2007, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51Q2kqM7zUL._SX387_BO1,204,203,200_.jpg')
 a.books << Book.create(title: 'Ruby Pocket Reference', pages: 224, year_published: 2015, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51FlRmxu-4L._SX300_BO1,204,203,200_.jpg')
+Review.create(user_id:)
+
 
 b = Author.create(name: 'David A. Black')
 b.books << Book.create(title: 'The Well-Grounded Rubyist', pages: 584, year_published: 2019, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/41812LkarcL._SX397_BO1,204,203,200_.jpg')
@@ -40,3 +42,12 @@ j.books << Book.create(title: 'Ruby Cookbook', pages: 992, year_published: 2015,
 
 k = Author.create(name: 'Ray Yao')
 k.books << Book.create(title: 'RUBY: In 8 Hours', pages: 204, year_published: 2018, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/41t-EUQ5mZL.jpg')
+
+amy    = User.create(name: 'Amy')
+brian  = User.create(name: 'Brian')
+meg    = User.create(name: 'Meg')
+sal    = User.create(name: 'Sal')
+mike   = User.create(name: 'Mike')
+megan  = User.create(name: 'Megan')
+jeff   = User.create(name: 'Jeff')
+ramiro = User.create(name: 'Ramiro')
