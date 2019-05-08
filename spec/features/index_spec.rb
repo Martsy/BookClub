@@ -10,7 +10,7 @@ describe "When a user visit / they should see a welcome page" do
     expect(current_path).to eq "/"
 
     click_link "books"
-    expect(page).to have_link "home"
+    expect(current_path).to eq "/books"
   end
 
 end
