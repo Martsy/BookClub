@@ -12,5 +12,4 @@ describe "When a user visit / they should see a welcome page" do
     click_link "books"
     expect(current_path).to eq "/books"
   end
-
 end
