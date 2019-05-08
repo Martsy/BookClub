@@ -3,4 +3,8 @@ class Book < ApplicationRecord
   has_many :authors, through: :author_books 
 
   validates_presence_of  :title, :pages, :year_published, :book_cover
+
+  def get_authors
+    authors.pluck :name
+  end
 end
