@@ -10,7 +10,7 @@ RSpec.describe "when visiting a book index page" do
 
   it "should show book  info" do
     visit  books_path
-    save_and_open_page
+
     Book.all.each do |book|
       expect(page).to have_content(book.title)
       expect(page).to have_content(book.pages)
