@@ -2,13 +2,14 @@
 require 'rails_helper'
 
 RSpec.describe "when visiting a book index page" do
+  attr_reader :book_1, :book_2
 
   before :each do
-    book_1 = create(:book)
+    @book_1 = create(:book)
     book_1.authors << create(:author)
     book_1.authors << create(:author)
 
-    book_2 = create(:book)
+    @book_2 = create(:book)
     book_2.authors << create(:author)
 
     User.create(name: "Joe").reviews.create(book: book_1, text: "Very good book", rating: 8)
@@ -28,6 +29,13 @@ RSpec.describe "when visiting a book index page" do
         expect(page).to have_content("published: #{book.year_published}")
         expect(find("img")[:src]).to eq(book.book_cover)
       end
+    end
+  end
+
+  it "should display default text if book has no reviews" do
+    within "#book-#{book_2.id}" do
+      expect(page).to_not have_content("⭐" )
+      expect(page).to have_content(" 0 user reviews")
     end
   end
 end
