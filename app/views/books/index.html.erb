@@ -1,8 +1,9 @@
 <html>
   <section id="books-section">
     <% @books.each do |book| %>
-      <article class="book">
+      <article class="book" id="book-<%= book.id%>">
         <h4 class="book-title"><%= book.title %></h4>
+        <img src="<%=book.book_cover%>" />
         <span>year: <%= book.year_published %></span>
         <span>pages: <%= book.pages %></span>
         <div>author(s): <%= book.get_authors.join(", ") %></div>
