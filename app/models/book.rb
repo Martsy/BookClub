@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   validates_presence_of  :title, :pages, :year_published, :book_cover
 
   def get_authors
-    authors.pluck(:name).presence || 'Anonymous'
+    authors.pluck(:name).presence || ['Anonymous']
   end
 
   def average_rating
