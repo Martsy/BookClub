@@ -39,4 +39,15 @@ class Book < ApplicationRecord
       Book.all
     end
   end
+
+  def self.highest_rated_books
+
+    order_by("rating desc")
+      end
+
+  def self.lowest_rated_books
+
+    order_by("rating")
+  end
+
 end

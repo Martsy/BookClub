@@ -23,10 +23,10 @@ RSpec.describe "when visiting a book index page" do
 
     @book_1.reviews.create(user: @user_1, text: "Very good book", rating: 8)
     @book_1.reviews.create(user: @user_2, text: "What did I just read", rating: 4)
+    @book_1.reviews.create(user: @user_3, text: "Meh book", rating: 6)
 
-    @book_2.reviews.create(user: @user_3, text: "Meh book", rating: 7)
+    @book_2.reviews.create(user: @user_2, text: "mehhh", rating: 7)
 
-    
     visit books_path
   end
 
@@ -57,33 +57,49 @@ RSpec.describe "when visiting a book index page" do
   end
 
   it "should be able to sort books by rating" do
-      expect(page).to have_link("rating-ascending")
-      click_link("rating-ascending")
-      expect(@book_1.title).to appear_before(@book_2.title)
+    expect(page).to have_link("rating-ascending")
 
-      expect(page).to have_link("rating-descending")
-      click_link("rating-descending")
-      expect(@book_2.title).to appear_before(@book_1.title)
+    click_link("rating-ascending")
+    expect("book-high-rated-#{@book_1.id}").to appear_before("book-#{@book_2.id}")
+
+    expect(page).to have_link("rating-descending")
+    click_link("rating-descending")
+
+    expect("book-high-rated-#{@book_2.id}").to appear_before("book-#{@book_1.id}")
   end
-  
+
   it "should be able to sort books by reviews" do
     expect(page).to have_link("reviews-ascending")
     click_link("reviews-ascending")
-    expect(@book_2.title).to appear_before(@book_1.title)
+    expect("book-#{@book_2.id}").to appear_before("book-#{@book_1.id}")
 
     expect(page).to have_link("reviews-descending")
     click_link("reviews-descending")
-    expect(@book_1.title).to appear_before(@book_2.title)
+    expect("book-#{@book_1.id}").to appear_before("book-#{@book_2.id}")
   end
 
   it "should be able to sort books by pages" do
     expect(page).to have_link("pages-ascending")
     click_link("pages-ascending")
-    expect(@book_2.title).to appear_before(@book_1.title)
+    expect("book-#{@book_2.id}").to appear_before("book-#{@book_1.id}")
 
     expect(page).to have_link("pages-ascending")
     click_link("pages-descending")
-    expect(@book_1.title).to appear_before(@book_2.title)
+    expect("book-#{@book_1.id}").to appear_before("book-#{@book_2.id}")
+  end
+
+  it "should display the three highest rated books, title and avg rating" do
+      expect("book-high-rated-#{@book_2.id}").to appear_before("book-high-rated-#{@book_1.id}")
+      expect("book-high-rated-#{@book_1.id}").to appear_before("book-high-rated-#{@book_3.id}")
+  end
+
+  it "should display the three worst rated books, title and avg rating" do
+      expect("book-low-rated-#{@book_1.id}").to appear_before("book-low-rated-#{@book_2.id}")
+      expect("book-low-rated-#{@book_2.id}").to appear_before("book-low-rated-#{@book_3.id}")
+  end
+
+  it "should display users written most reviews and a count of reviews" do
+    expect("user-stat-#{@user_2.id}").to appear_before("user-stat-#{@user_1.id}")
   end
 
 end
