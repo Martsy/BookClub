@@ -13,7 +13,7 @@
         padding:1%;
     }
 
-    h4 {
+    .book-title{
         margin-bottom:1%;
         background-color: lightgrey;
         padding:1%;
@@ -21,9 +21,23 @@
         border-radius: 10px 10px 0 0;
     }
 
+    .book-author {
+        font-size: 0.8rem;
+    }
+
+    .book-rating {
+        float: right;
+        font-size: 0.8rem;
+    }
+
     img {
         max-height:350px;
         width:100%;
+    }
+
+    .book-footer {
+        display:flex;
+        justify-content: space-between;
     }
 }
 
