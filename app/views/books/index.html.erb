@@ -1,0 +1,47 @@
+<html>
+  <section id="book-stats-area">
+    <article>
+      <h4>Highest Rated Books</h4>
+      <% @highest_rated_books.first(3).each.with_index do |book, index| %>
+        <div id="book-high-rated-<%=book.id%>"><%= "#{index + 1}. "%><%=book.title %></div>
+      <% end %>
+    </article>
+    <article>
+      <h4>Lowest Rated Books</h4>
+      <% @lowest_rated_books.first(3).each.with_index do |book, index| %>
+        <div id="book-low-rated-<%=book.id%>"><%= "#{index + 1}. "%><%=book.title %></div>
+      <% end %>
+    </article>
+    <article>
+      <h4>Users Most Reviews</h4>
+      <% @users_most_reviews.first(3).each.with_index do |user, index| %>
+        <div id="user-stat-<%=user.id%>"><%= "#{index + 1}. "%><%=user.name %></div>
+      <% end %>
+    </article>
+  </section>
+  <div>
+    <%= link_to "rating-ascending", books_path(order: 'rating')%>
+    <%= link_to "rating-descending", books_path(order: 'rating desc')%>
+    <%= link_to "pages-ascending", books_path(order: 'pages')%>
+    <%= link_to "pages-descending", books_path(order: 'pages desc')%>
+    <%= link_to "reviews-ascending", books_path(order: 'reviews')%>
+    <%= link_to "reviews-descending", books_path(order: 'reviews desc')%>
+  </div>
+  <section id="books-section">
+    <% @books.each do |book| %>
+      <article class="book" id="book-<%= book.id%>">
+        <h4 class="book-title"><%= book.title %></h4>
+        <span class="book-author">by: <%= book.get_authors.join(", ") %></span>
+        <span class="book-rating">
+          <%= "#{'⭐' * book.average_rating.to_i} #{book.number_of_reviews.to_s}
+ user review#{book.number_of_reviews != 1 ? 's' : ''}"%>
+        </span>
+        <img src="<%=book.book_cover%>" />
+        <div class="book-footer">
+          <span>published: <%= book.year_published %></span>
+          <span>pages: <%= book.pages %></span>
+        </div>
+      </article>
+    <% end %>
+  </section>
+</html>
