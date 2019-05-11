@@ -5,6 +5,7 @@ class CreateReview < ActiveRecord::Migration[5.1]
       t.references :book, foreign_key: true
       t.string :text
       t.integer :rating
+      t.string :headline
     end
   end
 end
