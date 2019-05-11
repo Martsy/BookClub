@@ -13,8 +13,11 @@ a.books << book1
 a.books << book2
 
 b = Author.create(name: 'David A. Black')
+bb = Author.create(name: 'Joseph Leo')
+
 book3 = Book.create(title: 'The Well-Grounded Rubyist', pages: 584, year_published: 2019, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/41812LkarcL._SX397_BO1,204,203,200_.jpg')
 b.books << book3
+bb.books << book3
 
 c = Author.create(name: 'Russ Olsen')
 c.books << Book.create(title: 'Eloquent Ruby', pages: 448, year_published: 2011, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/414gR4dCXiL._SX387_BO1,204,203,200_.jpg')

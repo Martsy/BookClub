@@ -37,8 +37,12 @@ RSpec.describe "when visiting a book index page" do
         expect(page).to have_content(book.title)
         expect(page).to have_content("#{"⭐" * book.average_rating.to_i}")
         expect(page).to have_content("#{book.number_of_reviews}")
+
+        book.get_authors.each do |author|
+          expect(page).to have_content("#{author.name}")
+        end if book.get_authors
+
         expect(page).to have_content("pages: #{book.pages}")
-        expect(page).to have_content("by: #{book.authors.pluck(:name).join(", ")}")
         expect(page).to have_content("published: #{book.year_published}")
         expect(find("img")[:src]).to eq(book.book_cover)
       end
@@ -46,13 +50,13 @@ RSpec.describe "when visiting a book index page" do
   end
 
   it "should return Anonymous if book has no author" do
-    expect(@book_3.get_authors.join(", ")).to eq("Anonymous")
+    expect(page).to have_content("Anonymous")
   end
 
   it "should display default text if book has no reviews" do
     within "#book-#{@book_3.id}" do
       expect(page).to_not have_content("⭐" )
-      expect(page).to have_content(" 0 user reviews")
+      expect(page).to have_content("0 user reviews")
     end
   end
 
