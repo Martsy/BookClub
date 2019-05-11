@@ -5,6 +5,4 @@ FactoryBot.define do
     year_published {rand(0..2019)}
     sequence :book_cover { |n| "https://www.images.com/image-#{n}.png" }
   end
-
-  factory :
 end
