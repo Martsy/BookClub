@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/', to: 'home#index'
-  # get '/books', to: 'books#index'
+  resources :home, only: [:index]
   resources :books, only: [:index, :show]
 
 
