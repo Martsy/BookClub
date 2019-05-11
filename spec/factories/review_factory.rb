@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :review do
 
-    sequence(:text) { |n| "Text-#{n}" }
+    sequence(:text) { |n| "Text-#{n}" }    
+    sequence(:headline) { |n| "Headline-#{n}" }
     rating {rand(1..10)}
     book
     user
