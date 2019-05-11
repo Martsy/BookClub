@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :book do
     sequence :title { |n| "Title-#{n}" }
-    pages {rand(100) + 900}
-    year_published {rand(1000) + 2000}
-    sequence :book_cover { |n| "https://www.images.com/image-#{n}.png" }
+    pages {rand(1..9999)}
+    year_published {rand(0..2019)}
+    sequence :book_cover { |n| "https://i.ebayimg.com/images/g/1vcAAOSwXuda~NiV/s-l300.jpg" }
   end
 end

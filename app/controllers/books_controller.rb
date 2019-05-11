@@ -6,4 +6,8 @@ class BooksController < ApplicationController
     @lowest_rated_books = Book.lowest_rated_books
     @users_most_reviews = User.most_reviews
   end
+
+  def show 
+    @book = Book.find(params[:id])
+  end
 end
