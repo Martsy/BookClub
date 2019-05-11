@@ -5,4 +5,5 @@ FactoryBot.define do
     year_published {rand(0..2019)}
     sequence :book_cover { |n| "https://i.ebayimg.com/images/g/1vcAAOSwXuda~NiV/s-l300.jpg" }
   end
+
 end

@@ -7,11 +7,19 @@ FactoryBot.define do
     book
     user
 
-    trait :user do
+    trait :same_user do
       user {User.first or create(:user)}
     end
-    trait :book do
+
+    trait :same_book do
       book {Book.first or create(:book)}
+    end
+
+    trait :same_author do
+      book {
+        create(:author_book,:same_author)
+        Book.last
+      }
     end
   end
 end
