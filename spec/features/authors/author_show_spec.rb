@@ -6,9 +6,37 @@ RSpec.describe 'When visiting an author show page' do
   before :each do
     create_list(:review, 4,:same_author)
     @author = Author.first
-    visit author_path(@author.id)
+    Book.all.each { |book| book.authors << create(:author) }
+    visit author_path(@author)
   end
 
+  it "should have links for all the books" do
+    Book.all.each do |book|
+      expect(page).to have_link(book.title)
+      expect(current_path).to eq(author_path(@author))
+
+      click_link(book.title)
+      expect(current_path).to eq(book_path(book))
+      visit author_path(@author)
+    end
+
+  end
+
+  it "should have links for all the authors on the page" do
+    Book.all.each do |book|
+      book.authors.each do |author|
+        next if author.name == @author.name
+        save_and_open_page
+        expect(page).to have_link(author.name)
+        expect(current_path).to eq(author_path(@author))
+
+        click_link(author.name)
+        expect(current_path).to eq(author_path(author))
+        visit author_path(@author)
+      end
+    end
+
+  end
   it "should show book info" do
     @author.books.each do |book|
       within "#book-#{book.id}" do
