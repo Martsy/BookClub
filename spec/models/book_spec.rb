@@ -53,6 +53,19 @@ describe Book do
     it "should return authors other than the one given" do
       expect(@book_2.other_authors(Author.first.id)).to eq([Author.second])
     end
+
+    it "should return top 3 reviews" do
+      reviews = create_list(:review, 3, rating: 10, book: @book_1)
+      create_list(:review, 3, rating: 1, book: @book_1)
+      expect(@book_1.top_3_reviews).to match_array(reviews)
+    end
+
+    it "should return bottom 3 reviews" do
+      create_list(:review, 3, rating: 10, book: @book_1)
+      reviews = create_list(:review, 3, rating: 1, book: @book_1)
+
+      expect(@book_1.bottom_3_reviews).to match_array(reviews)
+    end
   end
 end
 

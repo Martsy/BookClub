@@ -22,12 +22,38 @@
       <span>pages: <%= @book.pages %></span>
     </div>
   </article>
+  <section id="book-show-stats">
+    <span>
+      <h4>Best Reviews</h4>
+      <% @top_3_reviews.each do |review| %>
+        <article>
+          <h6>
+            <%=review.headline%>
+          </h6>
+          <span><%=review.user.name%></span>
+          <span><%=review.rating%></span>
+        </article>
+      <%end%>
+    </span>
+    <span>
+      <h4>Worst Reviews</h4>
+      <% @bottom_3_reviews.each do |review| %>
+        <article>
+          <h6>
+            <%=review.headline%>
+          </h6>
+          <span><%=review.user.name%></span>
+          <span><%=review.rating%></span>
+        </article>
+      <%end %>
+    </span>
+  </section>
   <section>
     <% @book.reviews.each do |review| %>
       <article id="review-<%=review.id%>">
         <h6> <%= review.headline%> </h6>
         <span>Rating: <%= review.rating%> </span>
-         <%= link_to  review.user.name, user_path(review.user) %>
+        <%= link_to  review.user.name, user_path(review.user) %>
         <%= image_tag  review.user.photo %>
         <p> <%= review.text%> </p>
       </article>
