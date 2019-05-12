@@ -25,10 +25,10 @@ describe Book do
       user_1 = create(:user)
       user_2 = create(:user)
 
-      book_1.reviews.create(user:user_1,text:"lower rating", rating: 2)
-      book_1.reviews.create(user:user_2, text:"high rating", rating: 8)
+      book_1.reviews.create(user:user_1,headline:"summary",text:"lower rating", rating: 2)
+      book_1.reviews.create(user:user_2,headline: "another summary", text:"high rating", rating: 8)
 
-      book_2.reviews.create(user:user_1, text:"High rating", rating: 7)
+      book_2.reviews.create(user:user_1, headline: "yet another summary", text:"High rating", rating: 7)
     end
 
     it "should be able to sort by rating" do

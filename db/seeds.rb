@@ -48,7 +48,7 @@ k = Author.create(name: 'Ray Yao')
 k.books << Book.create(title: 'RUBY: In 8 Hours', pages: 204, year_published: 2018, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/41t-EUQ5mZL.jpg')
 
 amy    = User.create(name: 'Amy')
-amy.reviews.create(book:book1,text:"Good book", rating: 8)
+amy.reviews.create(book:book1, headline: "Literally, the best book I have read in muh life", text:"Good book", rating: 8)
 brian  = User.create(name: 'Brian')
 brian.reviews.create(book:Book.third,headline: "Totally Awful",text:"Good book", rating: 1)
 meg    = User.create(name: 'Meg')

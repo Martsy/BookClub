@@ -21,11 +21,11 @@ RSpec.describe "when visiting a book index page" do
 
     @book_2.authors << @author_1
 
-    @book_1.reviews.create(user: @user_1, text: "Very good book", rating: 8)
-    @book_1.reviews.create(user: @user_2, text: "What did I just read", rating: 4)
-    @book_1.reviews.create(user: @user_3, text: "Meh book", rating: 6)
+    @book_1.reviews.create(user: @user_1, headline: "meh", text: "Very good book", rating: 8)
+    @book_1.reviews.create(user: @user_2, headline: "meh", text: "What did I just read", rating: 4)
+    @book_1.reviews.create(user: @user_3, headline: "meh", text: "Meh book", rating: 6)
 
-    @book_2.reviews.create(user: @user_2, text: "mehhh", rating: 7)
+    @book_2.reviews.create(user: @user_2, headline: "meh", text: "mehhh", rating: 7)
 
     visit books_path
   end
