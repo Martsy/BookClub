@@ -13,8 +13,11 @@ a.books << book1
 a.books << book2
 
 b = Author.create(name: 'David A. Black')
+bb = Author.create(name: 'Joseph Leo')
+
 book3 = Book.create(title: 'The Well-Grounded Rubyist', pages: 584, year_published: 2019, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/41812LkarcL._SX397_BO1,204,203,200_.jpg')
 b.books << book3
+bb.books << book3
 
 c = Author.create(name: 'Russ Olsen')
 c.books << Book.create(title: 'Eloquent Ruby', pages: 448, year_published: 2011, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/414gR4dCXiL._SX387_BO1,204,203,200_.jpg')
@@ -47,15 +50,13 @@ k.books << Book.create(title: 'RUBY: In 8 Hours', pages: 204, year_published: 20
 amy    = User.create(name: 'Amy')
 amy.reviews.create(book:book1,text:"Good book", rating: 8)
 brian  = User.create(name: 'Brian')
-brian.reviews.create(book:Book.third,text:"Good book", rating: 1)
+brian.reviews.create(book:Book.third,headline: "Totally Awful",text:"Good book", rating: 1)
 meg    = User.create(name: 'Meg')
-meg.reviews.create(book:Book.fourth,text:"Good book", rating: 2)
+meg.reviews.create(book:Book.fourth,headline: "Not a Good Book",text:"Good book", rating: 2)
 sal    = User.create(name: 'Sal')
-sal.reviews.create(book:Book.first,text:"Good book", rating: 3)
-sal.reviews.create(book:Book.last,text:"Good book", rating: 9)
+sal.reviews.create(book:Book.first, headline: "Teachers Favorite",text:"Good book", rating: 3)
+sal.reviews.create(book:Book.last, headline: "Fantastic Read", text:"Good book", rating: 9)
 mike   = User.create(name: 'Mike')
 megan  = User.create(name: 'Megan')
 jeff   = User.create(name: 'Jeff')
 ramiro = User.create(name: 'Ramiro')
-
-

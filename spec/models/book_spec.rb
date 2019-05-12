@@ -21,7 +21,7 @@ describe Book do
     before :each do
       @book_1 = create(:book, pages: 100)
       @book_2 = create(:book, pages: 200)
-
+      create_list(:author_book,2, book: @book_2)
       user_1 = create(:user)
       user_2 = create(:user)
 
@@ -45,7 +45,14 @@ describe Book do
       expect(Book.order_by("reviews")).to eq([book_2, book_1])
       expect(Book.order_by("reviews desc")).to eq([book_1, book_2])
     end
-    
+
+    it "should return authors if it has authors" do
+      expect(@book_1.get_authors).to eq(nil)
+      expect(@book_2.get_authors).to eq([Author.first, Author.second])
+    end
+    it "should return authors other than the one given" do
+      expect(@book_2.other_authors(Author.first.id)).to eq([Author.second])
+    end
   end
 end
 

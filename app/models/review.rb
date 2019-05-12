@@ -6,6 +6,5 @@ class Review < ApplicationRecord
    validates_presence_of :book_id
    validates_presence_of :text
    validates_presence_of :rating
-
-
+   validates_presence_of :headline
 end

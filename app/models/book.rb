@@ -8,7 +8,11 @@ class Book < ApplicationRecord
   validates_presence_of  :title, :pages, :year_published, :book_cover
 
   def get_authors
-    authors.pluck(:name).presence || ['Anonymous']
+    authors.limit(2) unless authors.empty?
+  end
+
+  def other_authors(id)
+    authors.where("authors.id != #{id}").limit(2)
   end
 
   def average_rating
@@ -17,6 +21,10 @@ class Book < ApplicationRecord
 
   def number_of_reviews
     reviews.count.presence || 0
+  end
+
+  def highest_review
+    self.reviews.order(rating: :desc).first
   end
 
   def self.order_by(option)

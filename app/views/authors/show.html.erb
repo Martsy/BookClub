@@ -1,0 +1,48 @@
+<html>
+  <article class="author-show">
+    <img src=<%= @author.photo%>/>
+    <span><%=@author.name%></span>
+  </article>
+
+  <section id="books-section">
+    <% @author.books.each do |book| %>
+      <article class="book" id="book-<%= book.id%>">
+        <h4 class="book-title">
+          <%= link_to  book.title, book %>
+        </h4>
+
+        <span class="book-author">
+          <% unless book.authors.count == 1 %>
+            by:
+            <% book.other_authors(@author.id).each do |author| %>
+                <%= link_to author.name, author_path(author) %>
+            <% end %>
+            et. al
+          <%end %>
+        </span>
+        <div class="book-rating">
+          <%= "#{'⭐' * book.average_rating.to_i} #{book.number_of_reviews.to_s}
+ user review#{book.number_of_reviews != 1 ? 's' : ''}"%>
+        </div>
+        <a href="<%=book_path(book.id) %>" >
+          <img src="<%=book.book_cover%>" />
+        </a>
+        <div class="book-footer">
+          <span>published: <%= book.year_published %></span>
+          <span>pages: <%= book.pages %></span>
+        </div>
+        <% if book.highest_review %>
+        <article id="review-<%=book.highest_review.id%>">
+          <h5> Best Review </h5>
+          <% highest_review = book.highest_review %>
+          <h6><%=highest_review.headline%></h6>
+          <span><%= highest_review.user.name%></span>
+          <span>Rating: <%= highest_review.rating%></span>
+          <p><%= highest_review.text%></p>
+        </article>
+        <% end %>
+      </article>
+    <% end %>
+  </section>
+
+</html>

@@ -1,9 +1,10 @@
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe 'When visiting a books show page' do
 
 before :each do
-    @review_1, @review_2  = create_list(:review, 2,:book)
+    @review_1, @review_2  = create_list(:review, 2,:same_book)
   @book = Book.first
     visit book_path(@book.id)
   end
