@@ -26,12 +26,13 @@ RSpec.describe 'When visiting an author show page' do
     Book.all.each do |book|
       book.authors.each do |author|
         next if author.name == @author.name
-        save_and_open_page
+
         expect(page).to have_link(author.name)
         expect(current_path).to eq(author_path(@author))
 
         click_link(author.name)
         expect(current_path).to eq(author_path(author))
+
         visit author_path(@author)
       end
     end
