@@ -27,6 +27,14 @@ class Book < ApplicationRecord
     self.reviews.order(rating: :desc).first
   end
 
+  def top_3_reviews
+    reviews.order(rating: :desc).limit(3)
+  end
+
+  def bottom_3_reviews
+    reviews.order(rating: :asc).limit(3)
+  end
+
   def self.order_by(option)
     case option
     when "rating"

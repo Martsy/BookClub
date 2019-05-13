@@ -14,10 +14,7 @@ describe User do
       user_1 = create(:user)
       user_2 = create(:user)
 
-      book_1 = create(:book)
-      book_2 = create(:book)
-
-      user_1.reviews.create(book: book_1, text:"yes", rating:1000)
+      create(:review, user: user_1)
 
       expect(User.most_reviews).to eq([user_1, user_2])
     end

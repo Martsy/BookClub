@@ -9,5 +9,7 @@ class BooksController < ApplicationController
 
   def show 
     @book = Book.find(params[:id])
+    @top_3_reviews = @book.top_3_reviews
+    @bottom_3_reviews = @book.bottom_3_reviews
   end
 end

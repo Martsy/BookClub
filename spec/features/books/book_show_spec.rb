@@ -29,6 +29,14 @@ before :each do
       end
     end
   end
+
+  it "should show top 3 rating for a book" do
+
+  end
+
+  it "should show a bottom 3 rating for a book" do
+
+  end
 end
 
   

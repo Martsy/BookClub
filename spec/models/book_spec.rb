@@ -25,10 +25,10 @@ describe Book do
       user_1 = create(:user)
       user_2 = create(:user)
 
-      book_1.reviews.create(user:user_1,text:"lower rating", rating: 2)
-      book_1.reviews.create(user:user_2, text:"high rating", rating: 8)
+      book_1.reviews.create(user:user_1,headline:"summary",text:"lower rating", rating: 2)
+      book_1.reviews.create(user:user_2,headline: "another summary", text:"high rating", rating: 8)
 
-      book_2.reviews.create(user:user_1, text:"High rating", rating: 7)
+      book_2.reviews.create(user:user_1, headline: "yet another summary", text:"High rating", rating: 7)
     end
 
     it "should be able to sort by rating" do
@@ -52,6 +52,19 @@ describe Book do
     end
     it "should return authors other than the one given" do
       expect(@book_2.other_authors(Author.first.id)).to eq([Author.second])
+    end
+
+    it "should return top 3 reviews" do
+      reviews = create_list(:review, 3, rating: 10, book: @book_1)
+      create_list(:review, 3, rating: 1, book: @book_1)
+      expect(@book_1.top_3_reviews).to match_array(reviews)
+    end
+
+    it "should return bottom 3 reviews" do
+      create_list(:review, 3, rating: 10, book: @book_1)
+      reviews = create_list(:review, 3, rating: 1, book: @book_1)
+
+      expect(@book_1.bottom_3_reviews).to match_array(reviews)
     end
   end
 end

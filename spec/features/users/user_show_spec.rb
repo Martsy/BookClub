@@ -1,19 +1,20 @@
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe 'When visiting an user show page' do
 
   before :each do
-    create_list(:review, 4, user: create(:user))
+    create_list(:review, 400, user: create(:user))
     @user = User.first
     visit user_path(@user.id)
   end
 
-  it "should have user name" do
+  it "should have user info" do
     within "#user-show" do
     expect(page).to have_content @user.name
     expect(find("img")[:src]).to eq(@user.photo)
     end
-  end 
+  end
 
   it "should show book info" do
     @user.reviews.each do |review|
@@ -28,6 +29,18 @@ RSpec.describe 'When visiting an user show page' do
         expect(page).to have_content review.created_at.strftime("%B %d, %Y")
       end
     end
+  end
+
+  it "should be able to sort reviews by date" do
+    expect(page).to have_link("sort ascending")
+    expect(page).to have_link("sort descending")
+
+    click_link("sort descending")
+    expect("review-#{Review.last.id}").to appear_before("review-#{Review.first.id}")
+
+    click_link("sort ascending")
+    expect("review-#{Review.first.id}").to appear_before("review-#{Review.last.id}")
+
   end
 end
 
