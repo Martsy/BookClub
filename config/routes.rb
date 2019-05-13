@@ -1,18 +1,11 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do # ~> NameError: uninitialized constant Rails
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: "home#index"
-  resources :books, only: [:index, :show, :new, :create]
-  resources :authors, only: [:show, :new, :create]
+  root to: 'home#index'
+  resources :authors, only: %i[show]
   resources :users, only: [:show]
 
-  # resources :books, only: [:new, :create, :show] do
-  #   resources :authors, only: [:new, :create]
+  resources :books, only: %i[index show new create] do
+    resources :reviews, only: %i[new create destroy]
   end
-
-
-# Rails.application.routes.draw do
-#   root "home#welcome"
-#   resources :books, only: [:index, :show, :new, :create] do
-#     resources :reviews, only: [:new, :index, :create]
-#   end
+end
