@@ -30,8 +30,9 @@
           <h6>
             <%=review.headline%>
           </h6>
-          <span><%=review.user.name%></span>
-          <span><%=review.rating%></span>
+          <%= link_to  review.user.name, user_path(review.user) %>
+
+          <span>Rating: <%=review.rating%></span>
         </article>
       <%end%>
     </span>
@@ -42,8 +43,8 @@
           <h6>
             <%=review.headline%>
           </h6>
-          <span><%=review.user.name%></span>
-          <span><%=review.rating%></span>
+          <%= link_to  review.user.name, user_path(review.user) %>
+          <span>Rating: <%=review.rating%></span>
         </article>
       <%end %>
     </span>
