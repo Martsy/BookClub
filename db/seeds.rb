@@ -47,16 +47,48 @@ j.books << Book.create(title: 'Ruby Cookbook', pages: 992, year_published: 2015,
 k = Author.create(name: 'Ray Yao')
 k.books << Book.create(title: 'RUBY: In 8 Hours', pages: 204, year_published: 2018, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/41t-EUQ5mZL.jpg')
 
-amy    = User.create(name: 'Amy')
-amy.reviews.create(book:book1, headline: "Literally, the best book I have read in muh life", text:"Good book", rating: 8)
-brian  = User.create(name: 'Brian')
-brian.reviews.create(book:Book.third,headline: "Totally Awful",text:"Good book", rating: 1)
-meg    = User.create(name: 'Meg')
-meg.reviews.create(book:Book.fourth,headline: "Not a Good Book",text:"Good book", rating: 2)
-sal    = User.create(name: 'Sal')
-sal.reviews.create(book:Book.first, headline: "Teachers Favorite",text:"Good book", rating: 3)
-sal.reviews.create(book:Book.last, headline: "Fantastic Read", text:"Good book", rating: 9)
-mike   = User.create(name: 'Mike')
-megan  = User.create(name: 'Megan')
-jeff   = User.create(name: 'Jeff')
-ramiro = User.create(name: 'Ramiro')
+l = Author.create(name: 'John Elder' photo: 'https://images-na.ssl-images-amazon.com/images/I/51IJaUq78CL._US230_.jpg')
+l.books << Book.create(title: 'Intro To Ruby Programming', pages: 166, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51K-WPsbYdL._SX404_BO1,204,203,200_.jpg')
+
+m = Author.create(name: 'Daniel Kehoe' photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4'
+m.books << Book.create(title: 'Learn Ruby on Rails 5', pages: 169, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51yimDYATbL.jpg')
+
+n = Author.create(name: 'Daniel Kehoe' photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4'
+n.books << Book.create(title: 'Learn Ruby on Rails 5', pages: 169, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51yimDYATbL.jpg')
+
+o = Author.create(name: 'Daniel Kehoe' photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4'
+o.books << Book.create(title: 'Learn Ruby on Rails 5', pages: 169, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51yimDYATbL.jpg')
+
+
+
+
+amy    = User.create(name: 'Amy', photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/holt.jpg' )
+amy.reviews.create(book:book1, headline: "Buy this Book Now", text:"A valuable resource for any new developers library", rating: 10)
+amy.reviews.create(book:book2, headline: "Literally, the best book I have read in muh life", text:"Good book", rating: 8)
+amy.reviews.create(book:book3, headline: "A 5 Year Old Know More", text:"Don't even waste your time on this one", rating: 2)
+amy.reviews.create(book:book6, headline: "Zzzzzzzzzzzz", text:"Great book if you suffer from insomnia", rating: 3)
+
+brian  = User.create(name: 'Brian', photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/zanti.jpg')
+brian.reviews.create(book:Book.third,headline: "Totally Awful",text:"Good book if your bored out of your mind", rating: 2)
+brian.reviews.create(book:book2, headline: "Fantastic!!!", text:"A great read!", rating: 10)
+brian.reviews.create(book:book6, headline: "Literally, the worst book I have read in muh life", text:"Terrible book", rating: 1)
+brian.reviews.create(book:book8, headline: "Author should have been an actor", text: "The author has no idea what he is talking about", rating: 2)
+brian.reviews.create(book:book10, headline: "Eye Opener", text: "This book will change the way you program", rating: 9)
+
+meg    = User.create(name: 'Meg', photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/stang.jpg')
+meg.reviews.create(book:Book.book11,headline: "Not a Good Book",text:"Good book", rating: 2)
+meg.reviews.create(book:Book.book12,headline: "Snooooooze",text:"My dog wrote a better book on programming.", rating: 2)
+meg.reviews.create(book:Book.book2,headline: "Compelling",text:"I could not put this book down", rating: 9)
+meg.reviews.create(book:Book.book2,headline: "A book for the Next Generation",text:"A must read for any new programmer", rating: 7)
+meg.reviews.create(book:Book.book2,headline: "Waste of time",text:"You can skip this one.", rating: 2)
+
+sal    = User.create(name: 'Sal' photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/espinosa.jpg')
+sal.reviews.create(book:Book.first, headline: "Teachers Favorite",text:"I read the entire book in one sitting", rating: 8)
+sal.reviews.create(book:Book.last, headline: "Fantastic Read", text:"Very Interiguing", rating: 9)
+sal.reviews.create(book:Book.first, headline: "Interesting",text:"Show me more", rating: 5)
+sal.reviews.create(book:Book.last, headline: "Interiguing", text:"Hmmmm...intersting", rating: 9)
+sal.reviews.create(book:Book.last, headline: "On the Fence", text:"I'm left curious", rating: 6)
+mike   = User.create(name: 'Mike' photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/dao.jpg')
+megan  = User.create(name: 'Megan' photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/mcmahon.jpg')
+jeff   = User.create(name: 'Jeff' photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/casimir.jpg')
+ramiro = User.create(name: 'Ramiro', photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/vaca.jpg')
