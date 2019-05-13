@@ -16,6 +16,7 @@
       <%= "#{'⭐' * @book.average_rating.to_i} #{@book.number_of_reviews.to_s}
  user review#{@book.number_of_reviews != 1 ? 's' : ''}"%>
     </span>
+    <%= link_to "Add Review", new_book_review_path(@book) %>
     <img src="<%=@book.book_cover%>" />
     <div class="book-footer">
       <span>published: <%= @book.year_published %></span>
@@ -31,7 +32,6 @@
             <%=review.headline%>
           </h6>
           <%= link_to  review.user.name, user_path(review.user) %>
-
           <span>Rating: <%=review.rating%></span>
         </article>
       <%end%>
