@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-
   def index
     @books = Book.order_by(params[:order])
     @highest_rated_books = Book.highest_rated_books
@@ -18,16 +17,23 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.authors = @authors
-    @book.save
-    redirect_to book_path(@book)
-    # redirect_to "/books/#{book.id}"
+    @book = add_authors_to_book
+    @book.save! ? (redirect_to book_path(Book.last)) : (redirect_to new_book_path)
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :authors, :pages, :year_published, :book_cover)
+    bp = params.require(:book).permit(:title, :pages, :year_published, :book_cover)
+    bp[:title].downcase.titleize
+    bp
   end
+
+  def add_authors_to_book
+    book = Book.new(book_params)
+    author_names = params[:book][:authors].strip.upcase.titleize.split(', ')
+    author_names.each { |name| book.authors << Author.find_or_create_by(name: name)}
+    book
+  end
+
 end
