@@ -6,7 +6,7 @@ RSpec.describe 'new book', type: :feature do
     @pages = 523
     @year_published = 2019
     @book_cover = 'url'
-    @authors = 'Chad Smith'
+    @authors = 'chAd, smITh, BOB, fRED'
   end
 
   describe 'As a visitor' do
@@ -21,7 +21,7 @@ RSpec.describe 'new book', type: :feature do
         expect(page).to have_content('Title')
         expect(page).to have_content('Author')
         expect(page).to have_content('Pages')
-        expect(page).to have_content('Cover')
+        expect(page).to have_content('Book cover')
       end
     end
   end
@@ -31,35 +31,34 @@ RSpec.describe 'new book', type: :feature do
       it 'I can create a new book' do
         visit new_book_path
 
-        fill_in 'Book[title]', with: @title
-        fill_in 'Book[author]', with: @author
-        fill_in 'Book[pages]', with: @pages
+        fill_in :book_title, with: @title
+        fill_in :book_authors, with: @authors
+        fill_in :book_pages, with: @pages
+        fill_in :book_year_published, with: @year_published
 
         click_button 'Create Book'
 
         new_book = Book.last
-
-        expect(current_path).to eq(book_path(book))
-        expect(book.title).to eq(@title)
-        expect(book.pages).to eq(@pages)
+        expect(current_path).to eq(book_path(new_book))
+        expect(page).to have_content(@title)
+        expect(page).to have_content(@pages)
       end
     end
   end
 
   it 'adds a new book to author or adds a new author' do
-    author_1 = Author.create(name: 'Chad Smith')
-
     visit new_book_path
 
-    fill_in 'book[title]', with: @title
-    fill_in 'book[pages]', with: @pages
-    fill_in 'book[authors]', with: @authors
-    fill_in 'book[year_published]', with: @year_published
-    fill_in 'book[book_cover]', with: @book_cover
+    fill_in :book_title, with: @title
+    fill_in :book_pages, with: @pages
+    fill_in :book_authors, with: @authors
+    fill_in :book_year_published, with: @year_published
+    fill_in :book_book_cover, with: @book_cover
 
     click_button 'Create Book'
 
-    expect(Author.count).to eq(1)
+    expect(Author.count).to eq(@authors.split.count)
+    expect(Book.first.authors.count).to eq(4)
     expect(Author.first.books.count).to eq(1)
   end
 end
