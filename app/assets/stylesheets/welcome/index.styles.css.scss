@@ -1,0 +1,23 @@
+#welcome-screen {
+    height: 100vh;
+    width:100vw;
+    display: grid;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+        font-size: 7rem;
+        align-self: self-end;
+    }
+    h4 {
+        align-self: self-start;
+    }
+    section {
+        align-self:self-end;
+    }
+
+    a{
+        align-self:self-start;
+    }
+}
