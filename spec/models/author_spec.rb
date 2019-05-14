@@ -8,5 +8,4 @@ describe Author do
   describe "relationships" do
     it {should have_many(:books).through(:author_books)}
   end
-
 end
