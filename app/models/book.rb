@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
-  validates_presence_of  :title, :pages, :year_published, :book_cover
+  validates_presence_of :title, :pages, :year_published, :book_cover
 
   def get_authors
     authors.limit(2) unless authors.empty?
