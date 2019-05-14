@@ -2,6 +2,7 @@
   <article class="author-show">
     <img src=<%= @author.photo%>/>
     <span><%=@author.name%></span>
+    <%= link_to "Delete Author", author_path(@author), method: :delete %>
   </article>
 
   <section id="books-section">

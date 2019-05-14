@@ -52,7 +52,7 @@ RSpec.describe 'When visiting an author show page' do
   end
 
   it "should display book review" do
-    @author.books.each do |book| 
+    @author.books.each do |book|
       review = book.highest_review
       within "#review-#{review.id}" do
         expect(page).to have_content("#{review.text}")
@@ -60,5 +60,14 @@ RSpec.describe 'When visiting an author show page' do
         expect(page).to have_content("Rating: #{review.rating}")
       end
     end
+  end
+
+  it "should be able to delete a author" do
+    expect(current_path).to eq(author_path(@author))
+    expect(page).to have_link('Delete Author')
+    click_link("Delete Author")
+    expect(current_path).to_not eq(author_path(@author))
+    expect(current_path).to eq(books_path)
+    expect(page).to_not have_content(@author.name)
   end
 end
