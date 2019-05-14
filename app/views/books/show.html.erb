@@ -1,64 +1,62 @@
-<html>
-  <article class="book" id="book-<%= @book.id%>">
-    <h4 class="book-title"><%= @book.title %></h4>
-    <span class="book-author">
-      <% if @book.get_authors %>
-        by:
-        <% @book.get_authors.each do |author| %>
-          <%= link_to author.name, author_path(author) %>
-        <% end %>
-        <% "et al" if @book.authors.count > 2 %>
-      <% else %>
-        by: Anonymous
+<article class="book-show" id="book-<%= @book.id%>">
+  <h4 class="book-title"><%= @book.title %></h4>
+  <span class="book-author">
+    <% if @book.get_authors %>
+      by:
+      <% @book.get_authors.each do |author| %>
+        <%= link_to author.name, author_path(author) %>
       <% end %>
-    </span>
-    <span class="book-rating">
-      <%= "#{'⭐' * @book.average_rating.to_i} #{@book.number_of_reviews.to_s}
- user review#{@book.number_of_reviews != 1 ? 's' : ''}"%>
-    </span>
-    <%= link_to "Add Review", new_book_review_path(@book) %>
-    <img src="<%=@book.book_cover%>" />
-    <div class="book-footer">
-      <span>published: <%= @book.year_published %></span>
-      <span>pages: <%= @book.pages %></span>
-    </div>
-    <%= link_to "Delete Book", book_path(@book), method: :delete %>
-  </article>
-  <section id="book-show-stats">
-    <span>
-      <h4>Best Reviews</h4>
-      <% @top_3_reviews.each do |review| %>
-        <article>
-          <h6>
-            <%=review.headline%>
-          </h6>
-          <%= link_to  review.user.name, user_path(review.user) %>
-          <span>Rating: <%=review.rating%></span>
-        </article>
-      <%end%>
-    </span>
-    <span>
-      <h4>Worst Reviews</h4>
-      <% @bottom_3_reviews.each do |review| %>
-        <article>
-          <h6>
-            <%=review.headline%>
-          </h6>
-          <%= link_to  review.user.name, user_path(review.user) %>
-          <span>Rating: <%=review.rating%></span>
-        </article>
-      <%end %>
-    </span>
-  </section>
-  <section>
-    <% @book.reviews.each do |review| %>
-      <article id="review-<%=review.id%>">
-        <h6> <%= review.headline%> </h6>
-        <span>Rating: <%= review.rating%> </span>
-        <%= link_to  review.user.name, user_path(review.user) %>
-        <%= image_tag  review.user.photo %>
-        <p> <%= review.text%> </p>
-      </article>
+    <% else %>
+      by: Anonymous
     <% end %>
-  </section>
-</html>
+  </span>
+  <span class="book-rating">
+    <%= "#{'⭐' * @book.average_rating.to_i} #{@book.number_of_reviews.to_s}
+ user review#{@book.number_of_reviews != 1 ? 's' : ''}"%>
+
+  </span>
+  <%= link_to "Add Review", new_book_review_path(@book) %>
+  <img src="<%=@book.book_cover%>" />
+  <div class="book-footer">
+    <span>published: <%= @book.year_published %></span>
+    <span>pages: <%= @book.pages %></span>
+  </div>
+  <%= link_to "Delete Book", book_path(@book), method: :delete %>
+</article>
+<section id="book-show-stats">
+  <span>
+    <h4>Best Reviews</h4>
+    <% @top_3_reviews.each do |review| %>
+      <article>
+        <h6>
+          <%=review.headline%>
+        </h6>
+        <%= link_to  review.user.name, user_path(review.user) %>
+        <span>Rating: <%=review.rating%></span>
+      </article>
+    <%end%>
+  </span>
+  <span>
+    <h4>Worst Reviews</h4>
+    <% @bottom_3_reviews.each do |review| %>
+      <article>
+        <h6>
+          <%=review.headline%>
+        </h6>
+        <%= link_to  review.user.name, user_path(review.user) %>
+        <span>Rating: <%=review.rating%></span>
+      </article>
+    <%end %>
+  </span>
+</section>
+<section>
+  <% @book.reviews.each do |review| %>
+    <article id="review-<%=review.id%>">
+      <h6> <%= review.headline%> </h6>
+      <span>Rating: <%= review.rating%> </span>
+      <%= link_to  review.user.name, user_path(review.user) %>
+      <%= image_tag  review.user.photo %>
+      <p> <%= review.text%> </p>
+    </article>
+  <% end %>
+</section>

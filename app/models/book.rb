@@ -5,10 +5,17 @@ class Book < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :users, through: :reviews
 
+  before_save {self.title = title.titleize}
+
+  validates_uniqueness_of :title
+  
+
   validates_presence_of :title, :pages, :year_published, :book_cover
+  validates :pages, inclusion: 1..10000
+  validates :year_published, inclusion: 1456..2019
 
   def get_authors
-    authors.limit(2) unless authors.empty?
+    authors unless authors.empty?
   end
 
   def other_authors(id)

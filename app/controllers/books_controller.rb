@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 
   def create
     @book = add_authors_to_book
-    @book.save! ? (redirect_to book_path(Book.last)) : (redirect_to new_book_path)
+    @book.save ? (redirect_to book_path(Book.last)) : (redirect_to new_book_path)
   end
 
   def destroy

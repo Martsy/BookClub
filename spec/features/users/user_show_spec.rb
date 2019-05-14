@@ -39,7 +39,6 @@ RSpec.describe 'When visiting an user show page' do
 
     click_link("sort ascending")
     expect("review-#{Review.first.id}").to appear_before("review-#{Review.last.id}")
-
   end
 
   it "should be able to delete a review" do

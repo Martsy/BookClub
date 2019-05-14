@@ -37,7 +37,7 @@
           <h5> Best Review </h5>
           <% highest_review = book.highest_review %>
           <h6><%=highest_review.headline%></h6>
-          <span><%= highest_review.user.name%></span>
+          <%= link_to highest_review.user.name, user_path(highest_review.user)%>
           <span>Rating: <%= highest_review.rating%></span>
           <p><%= highest_review.text%></p>
         </article>
