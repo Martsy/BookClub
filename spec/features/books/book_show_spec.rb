@@ -39,6 +39,14 @@ RSpec.describe 'When visiting a books show page' do
     fill_in :review_rating, with: 5
     fill_in :review_text, with: "It was the best of time... it was the worst of times"
     click_on :commit
+  end
 
+  it "should be able to delete a book" do
+    expect(Book.find(@book.id)).to eq(@book)
+    expect(current_path).to eq(book_path(@book))
+    expect(page).to have_link('Delete Book')
+    click_link("Delete Book")
+    expect(current_path).to_not eq(book_path(@book))
+    expect(current_path).to eq(books_path)
   end
 end

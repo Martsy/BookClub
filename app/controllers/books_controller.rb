@@ -21,6 +21,11 @@ class BooksController < ApplicationController
     @book.save! ? (redirect_to book_path(Book.last)) : (redirect_to new_book_path)
   end
 
+  def destroy
+    Book.find(params[:id]).destroy
+    redirect_to books_path
+  end
+
   private
 
   def book_params

@@ -47,16 +47,16 @@ j.books << Book.create(title: 'Ruby Cookbook', pages: 992, year_published: 2015,
 k = Author.create(name: 'Ray Yao')
 k.books << Book.create(title: 'RUBY: In 8 Hours', pages: 204, year_published: 2018, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/41t-EUQ5mZL.jpg')
 
-l = Author.create(name: 'John Elder' photo: 'https://images-na.ssl-images-amazon.com/images/I/51IJaUq78CL._US230_.jpg')
+l = Author.create(name: 'John Elder', photo: 'https://images-na.ssl-images-amazon.com/images/I/51IJaUq78CL._US230_.jpg')
 l.books << Book.create(title: 'Intro To Ruby Programming', pages: 166, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51K-WPsbYdL._SX404_BO1,204,203,200_.jpg')
 
-m = Author.create(name: 'Daniel Kehoe' photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4'
+m = Author.create(name: 'Daniel Kehoe', photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4')
 m.books << Book.create(title: 'Learn Ruby on Rails 5', pages: 169, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51yimDYATbL.jpg')
 
-n = Author.create(name: 'Daniel Kehoe' photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4'
+n = Author.create(name: 'Daniel Kehoe', photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4')
 n.books << Book.create(title: 'Learn Ruby on Rails 5', pages: 169, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51yimDYATbL.jpg')
 
-o = Author.create(name: 'Daniel Kehoe' photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4'
+o = Author.create(name: 'Daniel Kehoe', photo: 'https://avatars2.githubusercontent.com/u/950301?s=460&v=4')
 o.books << Book.create(title: 'Learn Ruby on Rails 5', pages: 169, year_published: 2016, book_cover: 'https://images-na.ssl-images-amazon.com/images/I/51yimDYATbL.jpg')
 
 
@@ -85,7 +85,7 @@ meg.reviews.create(book:Book.book2,headline: "Waste of time",text:"You can skip 
 sal    = User.create(name: 'Sal' photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/espinosa.jpg')
 sal.reviews.create(book:Book.first, headline: "Teachers Favorite",text:"I read the entire book in one sitting", rating: 8)
 sal.reviews.create(book:Book.last, headline: "Fantastic Read", text:"Very Interiguing", rating: 9)
-sal.reviews.create(book:Book.first, headline: "Interesting",text:"Show me more", rating: 5)
+sal.reviews.create(book:Book.b3, headline: "Interesting",text:"Show me more", rating: 5)
 sal.reviews.create(book:Book.last, headline: "Interiguing", text:"Hmmmm...intersting", rating: 9)
 sal.reviews.create(book:Book.last, headline: "On the Fence", text:"I'm left curious", rating: 6)
 mike   = User.create(name: 'Mike' photo: 'https://d682ma8ami8n4.cloudfront.net/images/staff/dao.jpg')

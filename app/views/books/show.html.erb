@@ -22,6 +22,7 @@
       <span>published: <%= @book.year_published %></span>
       <span>pages: <%= @book.pages %></span>
     </div>
+    <%= link_to "Delete Book", book_path(@book), method: :delete %>
   </article>
   <section id="book-show-stats">
     <span>
