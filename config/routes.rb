@@ -3,13 +3,12 @@ Rails.application.routes.draw do # ~> NameError: uninitialized constant Rails
 
   root to: 'home#index'
   resources :authors, only: [:show]
-  
+
   resources :users, only: [:show] do
     resources :reviews, only: [:destroy]
-  end 
-  
-  resources :books, only: %i[index show new create] do
+  end
+
+  resources :books, only: %i[index show new create destroy] do
     resources :reviews, only: %i[new create destroy]
   end
 end
-  
