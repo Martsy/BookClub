@@ -31,7 +31,7 @@
     <% @books.each do |book| %>
       <article class="book" id="book-<%= book.id%>">
         <h4 class="book-title">
-          <%= link_to  book.title, book %> 
+          <%= link_to  book.title, book %>
         </h4>
 
         <span class="book-author">
@@ -61,5 +61,6 @@
         </div>
       </article>
     <% end %>
+    <%= link_to "Add Book", new_book_path %>
   </section>
 </html>
