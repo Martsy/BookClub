@@ -5,7 +5,4 @@ class UsersController < ApplicationController
     @reviews = params[:order] ? @user.reviews_desc : @user.reviews
   end
 
-  def delete
-binding.pry
-  end
 end

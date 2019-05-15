@@ -1,7 +1,7 @@
-<html>
+<div>
   <article class="author-show">
     <img src=<%= @author.photo%>/>
-    <span><%=@author.name%></span>
+    <div><%=@author.name%></div>
     <%= link_to "Delete Author", author_path(@author), method: :delete %>
   </article>
 
@@ -46,4 +46,4 @@
     <% end %>
   </section>
 
-</html>
+</div>
