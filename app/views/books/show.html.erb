@@ -1,5 +1,5 @@
 <article class="book-show" id="book-<%= @book.id%>">
-  <h4 class="book-title"><%= @book.title %></h4>
+  <h2 class="book-title"><%= @book.title %></h2>
   <span class="book-author">
     <% if @book.get_authors %>
       by:
@@ -49,10 +49,10 @@
     <%end %>
   </span>
 </section>
-<section>
+<section id="book-show-reviews">
   <% @book.reviews.each do |review| %>
-    <article id="review-<%=review.id%>">
-      <h6> <%= review.headline%> </h6>
+    <article class="book-show-review" id="review-<%=review.id%>">
+      <h3> <%= review.headline%> </h3>
       <span>Rating: <%= review.rating%> </span>
       <%= link_to  review.user.name, user_path(review.user) %>
       <%= image_tag  review.user.photo %>

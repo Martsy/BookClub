@@ -1,0 +1,37 @@
+#user-show-page {
+
+    .review {
+        display:flex;
+        justify-content:space-around;
+        margin:10px;
+        background-color: lightgrey;
+        border-radius: 10px;
+        padding:20px;
+        img {
+            max-height:200px;
+        }
+    }
+    .book-review {
+        margin-right: 10px;
+    }
+
+    #book-area {
+        display:flex;
+        flex-wrap:wrap;
+    }
+}
+
+#user-show {
+    border: 10px;
+    background-color: lightgrey;
+    position:relative;
+    border-radius: 10px;
+    margin: 3%;
+    max-width:400px;
+    img {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        object-fit:contain;
+    }
+}

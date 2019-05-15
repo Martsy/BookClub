@@ -1,7 +1,11 @@
-#book-stats-area {
+#book-stats-area, #sorting-books {
     display: flex;
+    justify-content: space-around;
 }
-
+#sorting {
+    padding:10px;
+    text-align:center;
+}
 #books-section {
     height:95%;
     display: flex;

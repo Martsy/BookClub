@@ -1,35 +1,44 @@
-<html>
+<div id="user-show-page">
   <article id="user-show">
     <img src="<%= @user.photo%>">
-    <span><%=@user.name%></span>
+    <div><%=@user.name%></div>
   </article>
   <section id="reviews-section">
     <%= link_to "sort ascending", user_path(@user)%>
     <%= link_to "sort descending", user_path(@user, order: 'desc')%>
-    <% @reviews.each do |review| %>
+    <div id="book-area">
+      <% @reviews.each do |review| %>
       <article class="review" id="review-<%= review.id%>">
-        <h4 class="review-headline">
-          <%= review.headline %>
-        </h4>
-        <%=link_to "Delete Review", user_review_path(@user, review),
-         method: :delete%>
-        <p><%=review.created_at.strftime("%B %d, %Y")%></p>
-        <p>Rating: <%=review.rating %> </p>
-        <p> <%=review.text %> </p>
-        <article class="book-review">
+
+        <article class="book-review book">
           <a href="<%=book_path(review.book.id) %>">
             <h5>
               <%=review.book.title%>
             </h5>
           </a>
+
           <div class="book-rating">
             <%= "#{'⭐' * review.book.average_rating.to_i} #{review.book.number_of_reviews.to_s} user review#{review.book.number_of_reviews != 1 ? 's' : ''}"%>
           </div>
+
           <a href="<%=book_path(review.book.id) %>">
             <img src="<%=review.book.book_cover%>">
           </a>
+          <div>
+          </div>
         </article>
+          <div>
+            <h4 class="review-headline">
+              <%= review.headline %>
+            </h4>
+            <%=link_to "Delete Review", user_review_path(@user, review),
+             method: :delete%>
+            <p><%=review.created_at.strftime("%B %d, %Y")%></p>
+            <p>Rating: <%=review.rating %> </p>
+            <p> <%=review.text %> </p>
+          </div>
       </article>
-    <% end %>
+      <% end %>
+    </div>
   </section>
-</html>
+</div>

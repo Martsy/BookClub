@@ -1,3 +1,30 @@
-.book-show, #book-show-stats {
+.book-show {
+    display: grid;
+    justify-content:center;
+}
+#book-show-stats {
     display:flex;
+    justify-content: center;
+    margin: 0 10%;
+
+    span{
+        margin: 5%;
+    }
+}
+#book-show-reviews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+.book-show-review {
+    width: 23%;
+    margin: 2%;
+    text-align:center;
+    background-color:lightgrey;
+    border-radius:10px;
+}
+.book-show-review img {
+    object-fit: contain;
+    width:90%;
+    border-radius:10px;
 }
