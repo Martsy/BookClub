@@ -14,6 +14,7 @@ class Book < ApplicationRecord
   validates :year_published, inclusion: 1456..2019
   validates :year_published, numericality: true
   validates :pages, numericality: true
+  validates :title, length: { minimum: 4 }
 
   def get_authors
     authors unless authors.empty?
