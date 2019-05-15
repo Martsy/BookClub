@@ -7,8 +7,6 @@ class Book < ApplicationRecord
 
   before_save { self.title = title.titleize }
 
-  validates :title, uniqueness: true
-
   validates :title, :pages, :year_published, :book_cover, presence: true
   validates :pages, inclusion: 1..10_000
   validates :year_published, inclusion: 1456..2019

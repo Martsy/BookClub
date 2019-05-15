@@ -65,7 +65,6 @@ describe Book do
     it 'should return bottom 3 reviews' do
       create_list(:review, 3, rating: 10, book: @book_1)
       reviews = create_list(:review, 3, rating: 1, book: @book_1)
-
       expect(@book_1.bottom_3_reviews).to match_array(reviews)
     end
   end

@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
   def index
     @books = Book.order_by(params[:order])
     @highest_rated_books = Book.highest_rated_books
