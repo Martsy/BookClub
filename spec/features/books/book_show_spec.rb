@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper' # ~> LoadError: cannot load such file -- rails_helper
 
 RSpec.describe 'When visiting a books show page' do
@@ -37,6 +38,20 @@ RSpec.describe 'When visiting a books show page' do
     fill_in :review_rating, with: 5
     fill_in :review_text, with: 'It was the best of time... it was the worst of times'
     click_on :commit
+    expect(current_path).to eq(book_path(@book))
+    expect(page).to have_content('It was aight')
+    expect(page).to have_content('It was the best of time... it was the worst of times')
+  end
+
+  it 'should redirect to new review form if wrong info is entered in new review form' do
+    expect(page).to have_content('Add Review')
+    click_link('Add Review')
+    expect(current_path).to eq(new_book_review_path(@book))
+    fill_in :review_user, with: 'jessy james'
+    fill_in :review_rating, with: 5
+    fill_in :review_text, with: 'It was the best of time... it was the worst of times'
+    click_on :commit
+    expect(current_path).to eq(new_book_review_path(@book))
   end
 
   it 'should be able to delete a book' do
