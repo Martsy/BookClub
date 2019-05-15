@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
   def index
     @books = Book.order_by(params[:order])
     @highest_rated_books = Book.highest_rated_books
@@ -37,8 +38,7 @@ class BooksController < ApplicationController
   def add_authors_to_book
     book = Book.new(book_params)
     author_names = params[:book][:authors].strip.upcase.titleize.split(', ')
-    author_names.each { |name| book.authors << Author.find_or_create_by(name: name)}
+    author_names.each { |name| book.authors << Author.find_or_create_by(name: name) }
     book
   end
-
 end

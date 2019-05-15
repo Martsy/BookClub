@@ -2,11 +2,11 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :book
 
-  validates_uniqueness_of :user_id, scope: :book_id
+  validates :user_id, uniqueness: { scope: :book_id }
 
-  validates_presence_of :user_id
-  validates_presence_of :book_id
-  validates_presence_of :text
-  validates_presence_of :rating
-  validates_presence_of :headline
+  validates :user_id, presence: true
+  validates :book_id, presence: true
+  validates :text, presence: true
+  validates :rating, presence: true
+  validates :headline, presence: true
 end
